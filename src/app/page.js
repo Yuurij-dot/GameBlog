@@ -56,24 +56,47 @@ export default function Home() {
           <div className="my-4">
 
             {todos.map( (todo, index) => {
-              if( todo.status == false){
-                return (
-                  <TodoModelNotDone key={index} 
-                    name={todo.name}
-                  />
-                )
+              if(status == false) {
+                if( todo.status == false){
+                  return (
+                    <TodoModelNotDone key={index} 
+                      name={todo.name}
+                    />
+                  )
+                }
+              }
+
+              if(status == true) {
+                if(todo.status == true) {
+                  return(
+                    <TodoModelDone  key={index}
+                      name={todo.name}
+                    />
+                  )
+                }
+              }
+
+              if(status == 'showAll') {
+                if(todo.status == true){
+                  return(
+                      <TodoModelDone 
+                        key = {index}
+                        name={todo.name}
+                      />         
+                  )
+                }
+                if(todo.status == false) {
+                  return(
+                    <TodoModelNotDone 
+                        key= {index}
+                        name={todo.name}
+                      />
+                  )
+                }
               }
             })}
 
-            {todos.map( (todo, index) => {
-              if( todo.status == true){
-                return (
-                  <TodoModelDone key={index} 
-                    name={todo.name}
-                  />
-                )
-              }
-            })}
+            
           </div>
         </div>
 
